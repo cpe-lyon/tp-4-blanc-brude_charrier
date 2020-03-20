@@ -3,7 +3,7 @@
 ### Lucie CHARRIER
 ### 20 mars 2020
 
-## Exercice 1 : Gestion des utilisateurs et des groupes
+## Exercice 1 : Gestion des utilisateurs et des groupes.
 ### 1. Commencez par créer deux groupes groupe1 et groupe2
 `sudo addgroup groupe1`<br>
 `sudo addgroup groupe2`<br>
@@ -112,11 +112,14 @@ On accède au dossier /etc/passwd et on cherche l'utilisateur root puis on lit s
 On voit que l'interpréteur Shell de root est bash.<br>
 
 ### 18. à quoi correspond l’utilisateur _nobody_ ?
+C'est le nom conventionnel d'un compte d'utilisateur à qui aucun fichier n'appartient, qui n'est dans aucun groupe qui a des privilèges et dont les seules possibilités sont celles que tous les "autres utilisateurs" ont. <br>
+src : https://fr.wikipedia.org/wiki/Nobody_%28informatique%29<br>
 
 ### 19. Par défaut, combien de temps la commande sudo conserve-t-elle votre mot de passe en mémoire ? Quelle commande permet de forcer sudo à oublier votre mot de passe?
+On va voir sur la page `man sudo` et on lit que par défaut le mot de passe est conservé pour 15 minutes. On lit également que `sudo -k` force le superutilisateur à oublier son mot de passe.
 
 
-## Exercice 2
+## Exercice 2 : Gestion des permissions.
 ### 1. Dans votre $HOME, créez un dossier test, et dans ce dossier un fichier _fichier_ contenant quelques lignes de texte. Quels sont les droits sur test et fichier?
 
 ### 2. Retirez tous les droits sur ce fichier (même pour vous), puis essayez de le modifier et de l’aﬀicher entant que root. Conclusion?
