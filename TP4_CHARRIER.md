@@ -71,13 +71,20 @@ On fixe le nouveau mot de passe sur 'psw'.<br>
 Nous pouvons maintenant nous connecter avec u1. Nous sommes identifés dans le terminal comme u1@serveur.<br>
 
 ### 11. Quels sont l’uid et le gid de u1 ?
-
+La commande id permet d'obtenir les identifiants d'utilisateur(uid) et de groupe(gid).<br>
+`id u1`<br>
+Retourne : uid=1001(u1) gid=1001(groupe1) groups=1001(groupe1).
 
 ### 12. Quel utilisateur a pour uid 1003 ?
+On consulte le fichier passwd pour déterminer l'utilisateur 1003.<br>
+`cat /etc/passwd`<br>
+On voit que l'utilisateur avec l'uit 1003 est u3.<br>
 
 ### 13. Quel est l’id du groupe groupe1 ?
+En lisant le contenu de ce même fichier, on trouve que le gid du groupe1 est 1001.<br>
 
 ### 14. Quel groupe a pour guid 1002 ? (Rien n’empêche d’avoir un groupe dont le nom serait 1002...)
+De même, c'est le groupe2 qui a un gid de 1002.<br>
 
 ### 15. Retirez l’utilisateur u3 du groupe groupe2. Que se passe-t-il ? Expliquez.
 
