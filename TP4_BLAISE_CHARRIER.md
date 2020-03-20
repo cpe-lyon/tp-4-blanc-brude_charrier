@@ -142,10 +142,28 @@ On exécute `echo "echoHello" > fichier`. Bash nous refuse les droits d'écritur
 **A FINIR**
 
 ### 5. Placez-vous dans le répertoire test, et retirez-vous le droit en lecture pour ce répertoire. Listez le contenu du répertoire, puis exécutez ou aﬀichez le contenu du fichier fichier. Qu’en déduisez-vous ? Rétablissez le droit en lecture sur test.
+`cd /home`<br>
+`sudo chmod 355 test`<br>
+`cd test`<br>
+`ls`<br>
+On voit que test contient le fichier fichier.<br>
+`./fichier`<br>
+Nous ne sommes pas autorisés à lire le contenu de fichier.<br> On en déduit que refuser le droit de lecture d'un répertoire, implique également le refus de lecture de son contenu, même s'il autorise lui-même la lecture.<br>
 
-### 6. Créez dans test un fichier nouveau ainsi qu’un répertoire sstest. Retirez au fichier nouveau et au répertoire test le droit en écriture. Tentez de modifier le fichie rnouveau. Rétablissez ensuite le droit en écriture au répertoire test. Tentez de modifier le fichier nouveau, puis de le supprimer. Que pouvez-vous déduire de toutes ces manipulations ?
+### 6. Créez dans test un fichier nouveau ainsi qu’un répertoire sstest. Retirez au fichier nouveau et au répertoire test le droit en écriture. Tentez de modifier le fichier nouveau. Rétablissez ensuite le droit en écriture au répertoire test. Tentez de modifier le fichier nouveau, puis de le supprimer. Que pouvez-vous déduire de toutes ces manipulations ?
+`sudo touch nouveau`<br>
+`sudo mkdir sstest`<br>
+On retire maintenant à nouveau et test les droits en écriture (on ne modifie que pour l'utilisateur, on conserve les paramètres par défaut pour groupe et autres).<br>
+`sudo chmod 444 nouveau`<br>
+`cd ..`<br>
+`sudo chmod 155 test`<br>
+Comme attendu, on ne peut pas modifier le fichier nouveau. On rétabli ses droits en écriture au répertoire test.<br>
+`sudo chmod 355 test`<br>
+On constate qu'il n'est toujours pas possible d'écrire dans le fichier nouveau.<br>
+`rm nouveau`<br>
+Nous ne sommes pas autorisés à supprimer ce fichier. Nous concluons que le droit d'écriture d'un répertoire ne garanti pas le droit d'écriture sur le contenu du répertoire.<br>
 
-### 7. Positionnez vous dans votre répertoire personnel, puis retirez le droit en exécution du répertoire test.Tentez de créer, supprimer, ou modifier un fichier dans le répertoire test, de vous y déplacer, d’enlister le contenu, etc...Qu’en déduisez vous quant au sens du droit en exécution pour les répertoires ?
+### 7. Positionnez vous dans votre répertoire personnel, puis retirez le droit en exécution du répertoire test. Tentez de créer, supprimer, ou modifier un fichier dans le répertoire test, de vous y déplacer, d’enlister le contenu, etc...Qu’en déduisez vous quant au sens du droit en exécution pour les répertoires ?
 
 ### 8. Rétablissez le droit en exécution du répertoire test. Positionnez vous dans ce répertoire et retirez lui à nouveau le droit d’exécution. Essayez de créer, supprimer et modifier un fichier dans le répertoire test, de vous déplacer dans ssrep, de lister son contenu. Qu’en concluez-vous quant à l’influence des droits que l’on possède sur le répertoire courant ? Peut-on retourner dans le répertoire parent avec ”cd..”? Pouvez-vous donner une explication ?
 
