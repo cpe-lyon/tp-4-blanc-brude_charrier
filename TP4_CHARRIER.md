@@ -54,13 +54,24 @@ On peut utiliser deux commandes différentes : chown et chgrp qui font la même 
 `sudo chgrp groupe2 /home/groupe2`<br>
 
 ### 8. Comment faire pour que, dans ces dossiers, seul le propriétaire d’un fichier ait le droit de renommer ou supprimer ce fichier?
+On applique une modification des droits sur le fichier en fournissant une valeur numérique en octal :<br>
+`sudo chmod 660 groupe1`<br>
+`sudo chmod 660 groupe2`<br>
+Ici on autorise la lecture et l'écriture mais pas l'exécution sur l'utilisateur et le groupe mais pas les autres.<br>
 
-
-### 9. Pouvez-vous vous connecter en tant que u1? Pourquoi?
+### 9. Pouvez-vous vous connecter en tant que u1 ? Pourquoi?
+On utilise la commande switch user : su.<br>
+`su u1`<br>
+Retourne : Autentification failure.<br>
+On ne peut pas se connecter en tant que u1 car aucun mot de passe n'ayant été déclaré, l'utilisateur est inactif.<br> 
 
 ### 10. Activez le compte de l’utilisateur u1 et vérifiez que vous pouvez désormais vous connecter avec son compte.
+`sudo passwd u1`<br>
+On fixe le nouveau mot de passe sur 'psw'.<br>
+Nous pouvons maintenant nous connecter avec u1. Nous sommes identifés dans le terminal comme u1@serveur.<br>
 
 ### 11. Quels sont l’uid et le gid de u1 ?
+
 
 ### 12. Quel utilisateur a pour uid 1003 ?
 
@@ -79,7 +90,7 @@ On peut utiliser deux commandes différentes : chown et chgrp qui font la même 
 
 ### 17. Quel est l’interpréteur de commandes (Shell) de l’utilisateur root?
 
-### 18. à quoi correspond l’utilisateur nobody ?
+### 18. à quoi correspond l’utilisateur _nobody_ ?
 
 ### 19. Par défaut, combien de temps la commande sudo conserve-t-elle votre mot de passe en mémoire ? Quelle commande permet de forcer sudo à oublier votre mot de passe?
 
