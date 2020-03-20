@@ -94,13 +94,22 @@ Retourne : u1 is not in the sudoers file.<br>
 Nous ne sommes pas autorisés à supprimer l'utilisateur u3 du groupe2 car u1@serveur, l'utilisateur à partir duquel nous sommes identifiés, ne fait pas parti des superutilisateurs et ne peut donc pas se permettre d'en supprimer un autre.<br>
 
 ### 16. Modifiez le compte de u4 de sorte que :
+Afin de modifier le compte de u4, on utilisera la page du manuel de usermod et de passwd puis on jouera sur les différentes options.<br>
 ### — il expire au 1er juin 2020,
+`sudo usermod -e 2020-06-01 u4`<br>
 ### — il faut changer de mot de passe avant 90 jours,
+`sudo passwd -x 90 u4`<br>
 ### — il faut attendre 5 jours pour modifier un mot de passe,
+`sudo passwd -n 5 u4`<br>
 ### — l’utilisateur est averti 14 jours avant l’expiration de son mot de passe,
+`sudo passwd -w 14 u4`<br>
 ### — le compte sera bloqué 30 jours après expiration du mot de passe.
+`sudo usermod -f 30 u4`<br>
 
 ### 17. Quel est l’interpréteur de commandes (Shell) de l’utilisateur root?
+On accède au dossier /etc/passwd et on cherche l'utilisateur root puis on lit ses informations.<br>
+`cat /etc/passwd | grep 'root'`<br>
+On voit que l'interpréteur Shell de root est bash.<br>
 
 ### 18. à quoi correspond l’utilisateur _nobody_ ?
 
