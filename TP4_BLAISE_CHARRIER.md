@@ -128,6 +128,8 @@ fichier : -rw-r--r-- c'est-à-dire lire/écrire pour l'utilisateur et lire uniqu
 ### 2. Retirez tous les droits sur ce fichier (même pour vous), puis essayez de le modifier et de l’aﬀicher en tant que root. Conclusion ?
 Comme dans l'exercice précédent, on utilise la commande chmod et on applique 000 pour indiquer que ni l'utilisateur, le groupe ou autres ne pourront lire, écricre ou exécuter.<br>
 `sudo chmod 000 fichier`<br>
+En appelant la commande `ll`, on voit bien que les droits sur fichier sont ---------. On essaie d'ouvrir et de modifier le fichier fichier, les droits sont refusés.<br>
+Cependant en se plaçant en tant que root, on arrive à ouvrir fichier, le lire et le modifier, ce qui signifie que tous les droits sont ouverts pour root.<br>
 
 ### 3. Redonnez vous les droits en écriture et exécution sur fichier puis exécutez la commande echo "echoHello" > fichier. On a vu lors des TP précédents que cette commande remplace le contenu d’un fichier s’il existe déjà. Que peut-on dire au sujet des droits ?
 
