@@ -133,7 +133,7 @@ Cependant en se plaçant en tant que root, on arrive à ouvrir fichier, le lire 
 
 ### 3. Redonnez vous les droits en écriture et exécution sur fichier puis exécutez la commande echo "echoHello" > fichier. On a vu lors des TP précédents que cette commande remplace le contenu d’un fichier s’il existe déjà. Que peut-on dire au sujet des droits ?
 `sudo chmod 300 fichier`, on redonne les droits d'écriture et d'exécution uniquement à l'utilisateur.<br>
-On exécute `echo "echoHello" > fichier`. Bash nous refuse les droits d'écriture sur fichier. 
+On exécute `echo "echoHello" > fichier`. Bash nous refuse les droits d'écriture sur fichier. <br>
 **A FINIR**
 
 ### 4. Essayez d’exécuter le fichier. Est-ce que cela fonctionne ? Et avec sudo ? Expliquez.
@@ -163,25 +163,48 @@ On constate qu'il n'est toujours pas possible d'écrire dans le fichier nouveau.
 `rm nouveau`<br>
 Nous ne sommes pas autorisés à supprimer ce fichier. Nous concluons que le droit d'écriture d'un répertoire ne garanti pas le droit d'écriture sur le contenu du répertoire.<br>
 
-### 7. Positionnez vous dans votre répertoire personnel, puis retirez le droit en exécution du répertoire test. Tentez de créer, supprimer, ou modifier un fichier dans le répertoire test, de vous y déplacer, d’enlister le contenu, etc...Qu’en déduisez vous quant au sens du droit en exécution pour les répertoires ?
+### 7. Positionnez vous dans votre répertoire personnel, puis retirez le droit en exécution du répertoire test. Tentez de créer, supprimer, ou modifier un fichier dans le répertoire test, de vous y déplacer, d’en lister le contenu, etc...Qu’en déduisez vous quant au sens du droit en exécution pour les répertoires ?
+`cd`<br>
+`sudo chmod 255 /home/test`<br>
+On tente : `rm /home/test/nouveau`, permission denied est retourné.<br>
+On tente : `/home/test/./nouveau`, permission denied est retourné (on a autorisé son exécution au préalable).<br>
+On tente : `ls /home/test`, le contenu est bien listé.<br>
+On en conclue que retirer le droit d'exécution d'un répertoire retire le droit d'exécution des fichiers contenu mais n'empêche pas d'accéder aux répertoires.<br>
 
 ### 8. Rétablissez le droit en exécution du répertoire test. Positionnez vous dans ce répertoire et retirez lui à nouveau le droit d’exécution. Essayez de créer, supprimer et modifier un fichier dans le répertoire test, de vous déplacer dans ssrep, de lister son contenu. Qu’en concluez-vous quant à l’influence des droits que l’on possède sur le répertoire courant ? Peut-on retourner dans le répertoire parent avec ”cd..”? Pouvez-vous donner une explication ?
+`sudo chmod 355 /home/test`<br>
+`cd /home/test`<br>
+`sudo chmod 255 /home/test`<br>
+On ne peut ni créer un fichier, ni en supprimer un, ni en modifier un. On peut cependant accéder à un repertoire enfant et le lister mais pas créer de fichier.<br>
+On en conclue que les droits que l'on possède sur le répertoire courant n'influent que sur ce répertoire et les fichiers, uniquement, qu'il contient.<br>
+On peut utiliser la commande cd .. car elle n'est pas liée au répertoire test.<br>
 
 ### 9. Rétablissez le droit en exécution du répertoire test. Attribuez au fichier fichier les droits suﬀisants pour qu’une autre personne de votre groupe puisse y accéder en lecture, mais pas en écriture.
+`sudo chmod 355 test`<br>
+`sudo chmod 340 /test/fichier` donne les droit à groupe en lecture uniquement.<br>
 
 ### 10. Définissez un umask très restrictif qui interdit à quiconque à part vous l’accès en lecture ou en écriture, ainsi que la traversée de vos répertoires. Testez sur un nouveau fichier et un nouveau répertoire.
+`cd`<br>
+`umask 077`<br>, seul l'utilisateur a le droit d'écriture, de lecture et d'exécution.<br>
+On vérifie que les autres membres du groupe n'ont aucun droit sur mon dossier.<br>
 
 ### 11. Définissez un umask très permissif qui autorise tout le monde à lire vos fichiers et traverser vos répertoires, mais n’autorise que vous à écrire. Testez sur un nouveau fichier et un nouveau répertoire.
+`umask 022`<br>
+On verifie que tous le monde peut accéder et lire mais seul moi ai le droit d'écrire.<br>
 
 ### 12. Définissez un umask équilibré qui vous autorise un accès complet et autorise un accès en lecture aux membres de votre groupe. Testez sur un nouveau fichier et un nouveau répertoire.
+`umask 037`<br>
+On vérifie que les membres du groupe peuvent seulement lire, et que les autres n'ont aucun droits.<br>
 
 ### 13. Transcrivez les commandes suivantes de la notation classique à la notation octale ou vice-versa (vous pourrez vous aider de la commande stat pour valider vos réponses) :
-### - chmod u=rx,g=wx,o=r fic-chmod uo+w,g-rx ficen sachant que les droits initiaux de fic sont r--r-x---,
+### - chmod u=rx,g=wx,o=r fic,
+`chmod 534 fic`<br>
+### - chmod uo+w,g-rx fic en sachant que les droits initiaux de fic sont r--r-x---,
+`chmod 602 fic`
 ### - chmod 653 fic en sachant que les droits initiaux de fic sont 711,
+`chmod u-x,g+r,o+w fic`
 ### - chmod u+x, g=w, o-r fic en sachant que les droits initiaux de fic sont r--r-x---.
-
+`chmod 520 fic`
 ### 14. Aﬀichez les droits sur le programme passwd. Que remarquez-vous ? En aﬀichant les droits du fichier/etc/passwd, pouvez-vous justifier les permissions sur le programme passwd ?
-
-### 15.
-
-### 16.
+`ll etc/passwd`<br>
+Les droits sont les suivants : -rw-r--r--. L'utilisateur actuel peut lire le fichier et le modifier : il peut changer son mot de passe mais les autres utilisateurs du groupe et autres ne peuvent que lire, ce qui peut être problématique.
