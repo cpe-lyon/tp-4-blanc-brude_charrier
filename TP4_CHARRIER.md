@@ -87,6 +87,10 @@ En lisant le contenu de ce même fichier, on trouve que le gid du groupe1 est 10
 De même, c'est le groupe2 qui a un gid de 1002.<br>
 
 ### 15. Retirez l’utilisateur u3 du groupe groupe2. Que se passe-t-il ? Expliquez.
+La commande gpasswd permet d'administrer /etc/group et /etc/gshadow. L'option -d noous permet de supprimer un utilisateur du groupe choisi.<br>
+`sudo gpasswd -d u3 groupe2`<br>
+Retourne : u1 is not in the sudoers file.<br>
+Nous ne sommes pas autorisés à supprimer l'utilisateur u3 du groupe2 car u1@serveur, l'utilisateur à partir duquel nous sommes identifiés, ne fait pas parti des superutilisateurs et ne peut donc pas se permettre d'en supprimer un autre.<br>
 
 ### 16. Modifiez le compte de u4 de sorte que :
 ### — il expire au 1er juin 2020,
