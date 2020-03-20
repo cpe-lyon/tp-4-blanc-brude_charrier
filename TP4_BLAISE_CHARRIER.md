@@ -150,11 +150,11 @@ Comme dans l'exercice précédent, on utilise la commande chmod et on applique 0
 ### 12. Définissez un umask équilibré qui vous autorise un accès complet et autorise un accès en lecture aux membres de votre groupe. Testez sur un nouveau fichier et un nouveau répertoire.
 
 ### 13. Transcrivez les commandes suivantes de la notation classique à la notation octale ou vice-versa (vous pourrez vous aider de la commande stat pour valider vos réponses) :
-### - chmod u=rx,g=wx,o=r fic-chmod uo+w,g-rx ficen sachant que les droits initiaux deficsontr--r-x---
-### - chmod 653 ficen sachant que les droits initiaux deficsont711
-### - chmod u+x,g=w,o-r ficen sachant que les droits initiaux deficsontr--r-x---
+### - chmod u=rx,g=wx,o=r fic-chmod uo+w,g-rx ficen sachant que les droits initiaux de fic sont r--r-x---,
+### - chmod 653 fic en sachant que les droits initiaux de fic sont 711,
+### - chmod u+x, g=w, o-r fic en sachant que les droits initiaux de fic sont r--r-x---.
 
-### 14. Aﬀichez les droits sur le programmepasswd. Que remarquez-vous ? En aﬀichant les droits du fichier/etc/passwd, pouvez-vous justifier les permissions sur le programme passwd ?
+### 14. Aﬀichez les droits sur le programme passwd. Que remarquez-vous ? En aﬀichant les droits du fichier/etc/passwd, pouvez-vous justifier les permissions sur le programme passwd ?
 
 ### 15.
 
