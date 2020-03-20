@@ -134,12 +134,11 @@ Cependant en se plaçant en tant que root, on arrive à ouvrir fichier, le lire 
 ### 3. Redonnez vous les droits en écriture et exécution sur fichier puis exécutez la commande echo "echoHello" > fichier. On a vu lors des TP précédents que cette commande remplace le contenu d’un fichier s’il existe déjà. Que peut-on dire au sujet des droits ?
 `sudo chmod 300 fichier`, on redonne les droits d'écriture et d'exécution uniquement à l'utilisateur.<br>
 On exécute `echo "echoHello" > fichier`. Bash nous refuse les droits d'écriture sur fichier. <br>
-**A FINIR**
+On peut conclure que même si l'utilisateur actuel autorise les droits, si on est pas propriétaire du fichier (c'est root), on n'a pas le droit de le modifier.<br>
 
 ### 4. Essayez d’exécuter le fichier. Est-ce que cela fonctionne ? Et avec sudo ? Expliquez.
 `./fichier` nous retourne Permission denied.<br>
-`sudo ./fichier` nous retourne ADiplodocus: not found.<br>
-**A FINIR**
+`sudo ./fichier` nous retourne _premier mot_: not found.<br>
 
 ### 5. Placez-vous dans le répertoire test, et retirez-vous le droit en lecture pour ce répertoire. Listez le contenu du répertoire, puis exécutez ou aﬀichez le contenu du fichier fichier. Qu’en déduisez-vous ? Rétablissez le droit en lecture sur test.
 `cd /home`<br>
