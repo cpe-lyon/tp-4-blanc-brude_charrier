@@ -121,16 +121,21 @@ On va voir sur la page `man sudo` et on lit que par défaut le mot de passe est 
 
 ## Exercice 2 : Gestion des permissions.
 ### 1. Dans votre $HOME, créez un dossier test, et dans ce dossier un fichier _fichier_ contenant quelques lignes de texte. Quels sont les droits sur test et fichier?
+On execute `ll | grep 'test'` et `ll | grep 'fichier'`<br>
+test : drwxr-xr-x c'est-à-dire lire/écrire/exécuter pour l'utilisateur, lire/exécuter pour le groupe et autres.<br>
+fichier : -rw-r--r-- c'est-à-dire lire/écrire pour l'utilisateur et lire uniquement pour le groupe et autres.<br>
 
-### 2. Retirez tous les droits sur ce fichier (même pour vous), puis essayez de le modifier et de l’aﬀicher entant que root. Conclusion?
+### 2. Retirez tous les droits sur ce fichier (même pour vous), puis essayez de le modifier et de l’aﬀicher en tant que root. Conclusion ?
+Comme dans l'exercice précédent, on utilise la commande chmod et on applique 000 pour indiquer que ni l'utilisateur, le groupe ou autres ne pourront lire, écricre ou exécuter.<br>
+`sudo chmod 000 fichier`<br>
 
-### 3. Redonnez vous les droits en écriture et exécution sur fichier puis exécutez la commande echo "echoHello" > fichier. On a vu lors des TP précédents que cette commande remplace le contenu d’unfichier s’il existe déjà. Que peut-on dire au sujet des droits?
+### 3. Redonnez vous les droits en écriture et exécution sur fichier puis exécutez la commande echo "echoHello" > fichier. On a vu lors des TP précédents que cette commande remplace le contenu d’un fichier s’il existe déjà. Que peut-on dire au sujet des droits ?
 
 ### 4. Essayez d’exécuter le fichier. Est-ce que cela fonctionne ? Et avec sudo ? Expliquez.
 
 ### 5. Placez-vous dans le répertoire test, et retirez-vous le droit en lecture pour ce répertoire. Listez le contenu du répertoire, puis exécutez ou aﬀichez le contenu du fichier fichier. Qu’en déduisez-vous ? Rétablissez le droit en lecture sur test.
 
-### 6. Créez dans test un fichie rnouveau ainsi qu’un répertoire sstest. Retirez au fichier nouveau et au répertoire test le droit en écriture. Tentez de modifier le fichie rnouveau. Rétablissez ensuite le droit en écriture au répertoire test. Tentez de modifier le fichier nouveau, puis de le supprimer. Que pouvez-vous déduire de toutes ces manipulations ?
+### 6. Créez dans test un fichier nouveau ainsi qu’un répertoire sstest. Retirez au fichier nouveau et au répertoire test le droit en écriture. Tentez de modifier le fichie rnouveau. Rétablissez ensuite le droit en écriture au répertoire test. Tentez de modifier le fichier nouveau, puis de le supprimer. Que pouvez-vous déduire de toutes ces manipulations ?
 
 ### 7. Positionnez vous dans votre répertoire personnel, puis retirez le droit en exécution du répertoire test.Tentez de créer, supprimer, ou modifier un fichier dans le répertoire test, de vous y déplacer, d’enlister le contenu, etc...Qu’en déduisez vous quant au sens du droit en exécution pour les répertoires ?
 
@@ -145,9 +150,9 @@ On va voir sur la page `man sudo` et on lit que par défaut le mot de passe est 
 ### 12. Définissez un umask équilibré qui vous autorise un accès complet et autorise un accès en lecture aux membres de votre groupe. Testez sur un nouveau fichier et un nouveau répertoire.
 
 ### 13. Transcrivez les commandes suivantes de la notation classique à la notation octale ou vice-versa (vous pourrez vous aider de la commande stat pour valider vos réponses) :
-### -chmod u=rx,g=wx,o=r fic-chmod uo+w,g-rx ficen sachant que les droits initiaux deficsontr--r-x---
-### -chmod 653 ficen sachant que les droits initiaux deficsont711
-### -chmod u+x,g=w,o-r ficen sachant que les droits initiaux deficsontr--r-x---
+### - chmod u=rx,g=wx,o=r fic-chmod uo+w,g-rx ficen sachant que les droits initiaux deficsontr--r-x---
+### - chmod 653 ficen sachant que les droits initiaux deficsont711
+### - chmod u+x,g=w,o-r ficen sachant que les droits initiaux deficsontr--r-x---
 
 ### 14. Aﬀichez les droits sur le programmepasswd. Que remarquez-vous ? En aﬀichant les droits du fichier/etc/passwd, pouvez-vous justifier les permissions sur le programme passwd ?
 
