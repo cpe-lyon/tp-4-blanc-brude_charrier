@@ -24,7 +24,7 @@ On utilise la commande usermod pour modifier un compte utilisateur. L'option -a 
 ### 4. Donnez deux moyens d’aﬀicher les membres de groupe2.
 On affiche le contenu du fichier group, en ne selectionnant que groupe2 : <br>
 `cat /etc/group | grep groupe2`<br>
-Retourne : groupe2:x:1002:u2,u3,u4<br>
+Retourne : groupe2 : x : 1002 : u2,u3,u4<br>
 On peut également installer le packet members qui, à l'appel, affiche les utilisateurs du groupe demandé :<br>
 `members groupe2`<br>
 Retourne : u2 u3 u4 <br>
